@@ -5,31 +5,20 @@
 // Repeat this with the next element until the array is sorted
 
 function selectedSort (arr) {
+  const swap = (arr, idx1, idx2) => ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
+
   for (let i = 0; i < arr.length; i++) {
     let lowest = i;
     for (let j = i+1; j < arr.length; j++ ) {
       // console.log(i, j);
-      if (arr[j] < arr[lowest]) {
+      if (arr[lowest] > arr[j]) {
         lowest = j;
       }
     }
-
-    if (i != lowest) {
-      let temp = arr[i];
-      arr[i] = arr[lowest];
-      arr[lowest] = temp;
-
-    }
-    // Swapping the array to the lowest integer
-    console.log("************")
     console.log(arr);
-    console.log("Swapping!:");
-
-    // console.log(i, lowest);
-    // console.log(temp);
-    console.log("************")
+    if (i != lowest) swap(arr, i, lowest);
   }
   return arr;
 }
-selectedSort([34, 22, 10, 19, 17]);
+selectedSort([18, 22, 10, 25, 19, 17]);
 
